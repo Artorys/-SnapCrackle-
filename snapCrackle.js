@@ -10,21 +10,20 @@ function snapCrackle(maxValue)
         list[i] = list[i].toString()
         if(list[i] % 2 != 0 && list[i] % 5 == 0)
         {
-            list[i] = list[i].replace(list[i]," SnapCrackle, ")
+            list[i] = list[i].replace(list[i],"SnapCrackle,")
         }
         else if(list[i] % 2 != 0)
         {
-            list[i] = list[i].replace(list[i]," Snap, ")
+            list[i] = list[i].replace(list[i],"Snap,")
         }
         else if(list[i] % 5 == 0)
         {
-            list[i] = list[i].replace(list[i]," Crackle, ")
+            list[i] = list[i].replace(list[i],"Crackle,")
         }
         else
         {
-            list[i] = list[i].replace(list[i], `${list[i]}, `)
+            list[i] = list[i].replace(list[i], ` ${list[i]},`)
         }
     }
-    return list.join(" ")
-}
-console.log(snapCrackle(10))
+    return(list.join(" "))
+}   
