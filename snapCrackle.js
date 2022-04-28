@@ -2,6 +2,7 @@ function snapCrackle(maxValue)
 {
     let list = []
     let listPrimos = []
+    let newlist = []
     for(let i = 1;i <= maxValue;i++)
     {
         list.push(i)
@@ -23,44 +24,43 @@ function snapCrackle(maxValue)
            listPrimos.push(list[i])
         }
     }
-    for(let i = 0;i < list.length;i++)
+    list.forEach((el1,i1)=> 
     {
-        list[i] = list[i].toString()
-        for(let j = 0;j < listPrimos.length;j++)
+        listPrimos.forEach((el2)=>
         {
-            if(list[i] == listPrimos[j] && list[i] % 2 != 0 &&  list[i] % 5 == 0)
+            list[i1] = list[i1].toString()
+            if(el1 % 2 != 0 && el1 % 5 == 0 && el1 == el2)
             {
-                list[i] = list[i].replace(list[i],"SnapCracklePrime")
+                list[i1] = list[i1].replace(list[i1],"SnapCracklePrime")
             }
-            else if(list[i] == listPrimos[j] && list[i] % 2 != 0)
+            else if(el1 % 5 == 0 && el1 == el2)
             {
-                list[i] = list[i].replace(list[i],"SnapPrime")
+                list[i1] = list[i1].replace(list[i1],"CracklePrime")
             }
-            else if(list[i] == listPrimos[j])
+            else if(el1 % 2 != 0 && el1 == el2)
             {
-                list[i] = list[i].replace(list[i],"Prime")
+                list[i1] = list[i1].replace(list[i1],"SnapPrime") 
             }
-        }
-        if(list[i] % 2 != 0 && list[i] % 5 == 0 && list[i].includes("Prime") == false)
-        {
-            list[i] = list[i].replace("SnapCrackle")
-        }
-        else if(list[i] % 2 != 0 && list[i].includes("Prime") == false)
-        {
-            list[i] = list[i].replace(list[i],"Snap")
-        }
-        else if(list[i] % 5 == 0 && list[i].includes("Prime") == false)
-        {
-            list[i] = list[i].replace(list[i],"Crackle")
-        }
-        else
-        {
-            list[i] = list[i].replace(list[i],`${list[i]}`)
-        }
-        
-    }
+            else if(el1 % 2 != 0 && el1 % 5 == 0 && list[i1].includes("Prime") == false)
+            {
+                list[i1] = list[i1].replace(list[i1],"SnapCrackle")
+            }
+            else if(el1 % 5 == 0 && list[i1].includes("Prime") == false)
+            {
+                list[i1] = list[i1].replace(list[i1],"Crackle")
+            }
+            else if(el1 % 2 != 0 && list[i1].includes("Prime") == false)
+            {
+                list[i1] = list[i1].replace(list[i1],"Snap")
+            }
+            else if(el1 == el2)
+            {
+                list[i1] = list[i1].replace(list[i1],"Prime")
+            }
+        })
+    })
     list = list.join(" ")
     list = list.replace(/ /g, ", ")
     return list
 }
-console.log(snapCrackle(11))
+console.log(snapCrackle(30))
